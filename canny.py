@@ -51,8 +51,8 @@ def non_maximum_suppression(magnitude, direction):
 
 def threshold_hysteresis(image, low_threshold, high_threshold):
     """Aplica limiarização por histerese."""
-    strong = 255
-    weak = 75
+    strong = 150
+    weak = 50
 
     output = np.zeros_like(image, dtype=np.uint8)
     strong_i, strong_j = np.where(image >= high_threshold)
@@ -83,10 +83,10 @@ def canny_filter(image, low_threshold=50, high_threshold=150):
     return edges
 
 if __name__ == "__main__":
-    image = cv2.imread("360_F_299042079_vGBD7wIlSeNl7vOevWHiL93G4koMM967.jpg")  # Substitua pelo caminho da sua imagem
+    image = cv2.imread("anderson.jpg")  # Substitua pelo caminho da sua imagem
     canny_result = canny_filter(image, low_threshold=50, high_threshold=150)
 
-    cv2.imwrite('ResultadoCanny.png', canny_result)
+    cv2.imwrite('ResultadoCanny3.png', canny_result)
     cv2.imshow("Original", image)
     cv2.imshow("Bordas Canny", canny_result)
     cv2.waitKey(0)
